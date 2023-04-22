@@ -1,0 +1,36 @@
+query {
+  postCollection(order: sys_publishedAt_DESC, limit: 10){
+    items{
+      title
+      slug
+      featureImage{
+        url
+      }
+      sys{
+        publishedAt
+      }
+    }
+  }
+  projetoCollection(order:sys_publishedAt_DESC, limit: 10){
+    total
+    items{
+      titulo
+      artigoUrl
+      demoUrl
+      githubUrl
+      descricao
+      dataFinalizacao
+    }
+  }
+  categoriaCollection{
+    items{
+      nome
+      slug
+      linkedFrom{
+        entryCollection{
+          total
+        }
+      }
+    }
+  }
+}

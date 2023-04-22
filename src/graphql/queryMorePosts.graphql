@@ -1,0 +1,15 @@
+ query GetMorePosts( $slug:String, $preview:Boolean ){
+  postCollection(where: { slug_not_contains: $slug  },order: sys_publishedAt_DESC, preview:$preview, limit: 2){
+    items{
+      title
+      slug
+      sys{
+        publishedAt
+      }
+      featureImage{
+        url
+        description
+      }
+    }
+  }
+}

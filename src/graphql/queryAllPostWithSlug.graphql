@@ -1,0 +1,7 @@
+query AllPostWithSlug{
+  postCollection(where: { slug_exists: true }, order: sys_publishedAt_DESC) {
+  	items{
+      slug
+    }
+  }
+}

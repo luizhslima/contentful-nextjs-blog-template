@@ -1,0 +1,50 @@
+query PostBySlug($slug: String, $preview: Boolean) {
+  # add your query
+  postCollection(where: { slug: $slug }, preview: $preview, limit: 1) {
+    items {
+      title
+      slug
+      featureImage {
+        url
+      }
+      sys {
+        publishedAt
+      }
+      content {
+        json
+        links {
+          entries {
+            block {
+              sys{
+                id
+              }
+              ... on Sourcecode {
+                sys{
+                  id
+                }
+                __typename
+                language
+                snippetcode
+              }
+            }
+          }
+          assets {
+            block {
+              sys {
+                id
+              }
+              url
+              description
+            }
+          }
+        }
+      }
+      categoriasCollection {
+        items {
+          nome
+          slug
+        }
+      }
+    }
+  }
+}

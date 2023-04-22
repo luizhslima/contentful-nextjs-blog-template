@@ -1,124 +1,228 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import ProjectPanel from "@/components/panels/projectsPanel";
+import { formatMonthDayYear } from "@/components/utils/formats";
+import { getAllPostsForHome } from "@/lib/api";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import FooterIllustartion from "../assets/Coding _Two_Color.svg";
 
-const inter = Inter({ subsets: ['latin'] })
+export default function Home({ queryReponse }: { queryReponse: any }) {
+  const theme = useTheme();
+  const [posts, projetos, categorias] = queryReponse;
 
-export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <>
+      <Head>
+        <title>Bem-vindo ao Stackoverbusi</title>
+      </Head>
+      <Box
+        sx={{
+          [theme.breakpoints.between("xs", "sm")]: {
+            paddingX: 1,
+          },
+          width: {
+            xs: "100%",
+            md: "820px",
+            lg: "920px",
+          },
+          margin: "0 auto",
+        }}
+      >
+        <Grid container direction="row" alignItems={"center"}>
+          <Grid item xs={12} md={6} lg={6}>
+            <div className="flex flex-col gap-3">
+              <Typography
+                variant="h1"
+                sx={{
+                  fontFamily: "Anton",
+                }}
+              >
+                Hello World 💻
+              </Typography>
+              <Typography variant="h2">Olá, sou Luiz!</Typography>
+              <Typography variant="subtitle2">
+                Bem vindo ao meu site! 🎉
+              </Typography>
+              <Typography variant="body1">
+                Criei este site com o intuito de ajudar a comunidade, trazendo
+                conteúdo sobre programação resolvendo problemas reais de
+                negócios e programação. Sou desenvolvedor de software em São
+                Paulo e gosto de participar de projetos de código aberto, além
+                de escrever sobre codificação e criação de projetos pessoais e
+                inteligência financeira. Meus hobbies incluem jogos e animes.
+              </Typography>
+            </div>
+          </Grid>
+          <Grid item xs={12} md={6} lg={6}>
+            <Box
+              sx={{
+                background:
+                  "url('/illustrations/Coding_Outline.svg') no-repeat",
+                backgroundSize: "100%",
+                width: {
+                  xs: "100%",
+                  md: "461px",
+                  lg: "585px",
+                },
+                height: {
+                  xs: "200px",
+                  md: "296px",
+                  lg: "380px",
+                },
+              }}
+            ></Box>
+          </Grid>
+          <Grid item xs={12}>
+            <div className="pt-10 flex items-center">
+              <Typography
+                variant="h3"
+                sx={{
+                  flexGrow: "1",
+                  fontSize: {
+                    xs: theme.typography.pxToRem(24),
+                    lg: theme.typography.pxToRem(32),
+                  },
+                  marginBottom: 2,
+                }}
+              >
+                Últimos artigos 📰
+              </Typography>
+              <Button variant="contained" href="/blog/posts">
+                Ver mais
+              </Button>
+            </div>
+          </Grid>
+          <Grid item xs={12}>
+            {posts.map((item: any, index: number) => (
+              <Box
+                key={index}
+                sx={{
+                  display: "flex",
+                  "&:not(:last-child)": {
+                    borderBottom: "1px solid #ccc",
+                  },
+                  paddingY: 2,
+                  marginBottom: 2,
+                }}
+              >
+                <Typography
+                  variant="link"
+                  component="div"
+                  sx={{ flexGrow: "1" }}
+                >
+                  <Link href={`/blog/post/${item.slug}`}>{item.title}</Link>
+                </Typography>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+                <Typography
+                  variant="contrast"
+                  sx={{
+                    display: {
+                      sm: "block",
+                      xs: "none",
+                    },
+                  }}
+                >
+                  {formatMonthDayYear(item.sys.publishedAt)}
+                </Typography>
+              </Box>
+            ))}
+          </Grid>
+          <Grid item xs={12}>
+            <div className="pt-10 pb-5 flex items-center">
+              <Typography
+                variant="h3"
+                sx={{
+                  flexGrow: "1",
+                  fontSize: {
+                    xs: theme.typography.pxToRem(24),
+                    lg: theme.typography.pxToRem(32),
+                  },
+                  marginBottom: 2,
+                }}
+              >
+                Projetos 📋
+              </Typography>
+              <Button variant="contained">Ver mais</Button>
+            </div>
+          </Grid>
+          <Grid item xs={12}>
+            <ProjectPanel
+              infoText="Desculpe, novos projetos ainda estão em construção."
+              projetos={projetos}
+            ></ProjectPanel>
+          </Grid>
+          <Grid item xs={12}>
+            <Divider className="py-1" />
+          </Grid>
+          <Grid item xs={12} lg={5}>
+            <Card
+              sx={{
+                marginY: 1,
+              }}
+            >
+              <CardHeader title="categorias"></CardHeader>
+              <CardContent>
+                <List>
+                  {categorias.map((item: any, index: number) => (
+                    <ListItem key={index} disablePadding>
+                      <ListItemButton href={`/blog/categorias/${item.slug}`}>
+                        <ListItemText
+                          className="capitalize"
+                          primary={item.nome}
+                        ></ListItemText>
+                        {item.linkedFrom.entryCollection.total}
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} lg={5}>
+            <Box
+              className="relative"
+              sx={{
+                width: {
+                  xs: "100%",
+                  md: "461px",
+                  lg: "585px",
+                },
+                height: {
+                  xs: "200px",
+                  md: "296px",
+                  lg: "380px",
+                },
+              }}
+            >
+              <Image src={FooterIllustartion} alt="Illustration" />
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
 }
+
+export async function getStaticProps({ preview = false }) {
+  const queryReponse = (await getAllPostsForHome(preview)) ?? [];
+  return {
+    props: { preview, queryReponse },
+  };
+}
+
+//https://github.com/vercel/next.js/tree/canary/examples/cms-contentful/components

@@ -2,26 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "IBM Plex Sans";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+main{
+  min-height: 76vh;
+}
+
+.flex-divider{
+  border-bottom: 1px solid;
+  @apply border-b-blue-600;
+}
+
+
+@layer components{
+  .center-block{
+    @apply w-full md:w-[80%] lg:w-[60%] mx-auto;
+  }
+
+  .content-center{
+    @apply max-w-4xl mx-auto;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+.item-scroll-x {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.anchor-post-section{
+  text-decoration: none;
+  @apply text-black dark:text-white;
+  font-weight: 500;
+}
+
+.anchor-post-section:hover{
+  font-weight: bolder;
+}
+
+.index-link{
+  @apply text-lg text-black dark:text-white no-underline;
+}
+
+.index-link:hover{
+  @apply font-bold underline;
+}
+
+.img-miniatura{
+  @apply h-[200px] !important;
 }

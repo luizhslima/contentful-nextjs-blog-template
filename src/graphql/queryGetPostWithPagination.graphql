@@ -1,0 +1,17 @@
+query PostsWithPagination($pageSize:Int, $page:Int, $order:PostOrder, $preview:Boolean){
+  # add your query
+  postCollection(limit:$pageSize, skip:$page, order:[$order]){
+    skip
+    total
+    items{
+      featureImage{
+        url
+        description
+      }
+      title
+      sys{
+        publishedAt
+      }
+    }
+  }
+}
