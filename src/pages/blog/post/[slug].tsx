@@ -7,7 +7,7 @@ import { ArrowUpward } from "@mui/icons-material";
 import { Divider, Fab, Grid, Typography } from "@mui/material";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 export default function Post({ post, morePosts, preview }: any) {
   const router = useRouter();
@@ -19,9 +19,11 @@ export default function Post({ post, morePosts, preview }: any) {
     right: 16,
   };
 
+  
+
   useEffect(() => {
     setCurrentURl(`${location.origin}/blog/post/${post.slug}`);
-  }, [post.slug]);
+  });
 
   if (!router.isFallback && !post) {
     return (
