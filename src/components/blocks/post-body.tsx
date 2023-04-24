@@ -13,8 +13,7 @@ interface IndexSections {
 }
 
 export default function PostBody({ content }: any) {
-  const [sections, setSections] = useState<IndexSections[]>([]);
-  const list:IndexSections[]  = [];
+  const [sections] = useState<IndexSections[]>([]);
 
   const customMarkdownOptions = (content: any) => ({
     renderNode: {
@@ -26,12 +25,11 @@ export default function PostBody({ content }: any) {
       ),
       [BLOCKS.HEADING_2]: (node: Node) => {
         const text = (node as any).content[0].value;
-        if (sections.filter((item) => sections.indexOf(item)).length <= 0) {
-          list.push({
+        if (sections.filter((item) => item.anchorID === `#${slugify(text)}`).length <= 0) {
+          sections.push({
             anchorID: "#" + slugify(text),
             text,
           });
-          setSections(list);
         }
         return (
           <Typography variant="h2" id={slugify(text)}>

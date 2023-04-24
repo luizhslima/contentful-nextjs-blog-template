@@ -25,7 +25,7 @@ export default function AbsoluteFooter() {
               </IconButton>
             </div>
           </div>
-          <Typography>Desenvolvido por Luiz henrique</Typography>
+          <Typography>Feito por Luiz Monteiro</Typography>
         </div>
       </div>
     </footer>

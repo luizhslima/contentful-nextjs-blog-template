@@ -1,9 +1,10 @@
 query PostsWithPagination($pageSize:Int, $page:Int, $order:PostOrder, $preview:Boolean){
   # add your query
-  postCollection(limit:$pageSize, skip:$page, order:[$order]){
+  postCollection(limit:$pageSize, skip:$page, order:[$order], preview: $preview){
     skip
     total
     items{
+      slug
       featureImage{
         url
         description

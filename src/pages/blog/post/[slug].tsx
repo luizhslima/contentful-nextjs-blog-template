@@ -33,67 +33,75 @@ export default function Post({ post, morePosts, preview }: any) {
 
   return (
     <>
-      <Head>
-        <title>{`${post.title} | Luiz - Blog`}</title>
-        <meta property="og:image" content={post.featureImage.url} />
-      </Head>
-      <Grid
-        container
-        justifyContent={"center"}
-        sx={{
-          paddingX: {
-            xs: 1,
-          },
-          position: "relative",
-        }}
-      >
-        <Grid item xs={12}>
-          <div className="content-center">
-            <PostHeader
-              title={post.title}
-              coverImage={post.featureImage}
-              date={post.sys.publishedAt}
-            />
-          </div>
-        </Grid>
-        <Grid item xs={12}>
-          <PostBody content={post.content} />
-        </Grid>
-        <Grid item xs={12}>
-          <div className="content-center">
-            <ShareSocial
-              socialTypes={[
-                "facebook",
-                "twitter",
-                "reddit",
-                "linkedin",
-                "whatsapp",
-                "telegram",
-                "workspace",
-              ]}
-              title="Compartilhe nas suas redes sociais."
-              url={currentUrl}
-            />
-          </div>
-        </Grid>
-        <Divider />
-        <Grid item xs={12}>
-          {morePosts && morePosts.length > 0 && (
-            <MorePosts posts={morePosts} />
-          )}
-        </Grid>
-        <Fab
-          sx={fabStyle}
-          className="hidden lg:hidden"
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-            });
-          }}
-        >
-          <ArrowUpward />
-        </Fab>
-      </Grid>
+      {router.isFallback ? (
+        <div>
+          ...loading
+        </div>
+      ) : (
+        <>
+          <Head>
+            <title>{`${post.title} | Luiz - Blog`}</title>
+            <meta property="og:image" content={post.featureImage.url} />
+          </Head>
+          <Grid
+            container
+            justifyContent={"center"}
+            sx={{
+              paddingX: {
+                xs: 1,
+              },
+              position: "relative",
+            }}
+          >
+            <Grid item xs={12}>
+              <div className="content-center">
+                <PostHeader
+                  title={post.title}
+                  coverImage={post.featureImage}
+                  date={post.sys.publishedAt}
+                />
+              </div>
+            </Grid>
+            <Grid item xs={12}>
+              <PostBody content={post.content} />
+            </Grid>
+            <Grid item xs={12}>
+              <div className="content-center">
+                <ShareSocial
+                  socialTypes={[
+                    "facebook",
+                    "twitter",
+                    "reddit",
+                    "linkedin",
+                    "whatsapp",
+                    "telegram",
+                    "workspace",
+                  ]}
+                  title="Compartilhe nas suas redes sociais."
+                  url={currentUrl}
+                />
+              </div>
+            </Grid>
+            <Divider />
+            <Grid item xs={12}>
+              {morePosts && morePosts.length > 0 && (
+                <MorePosts posts={morePosts} />
+              )}
+            </Grid>
+            <Fab
+              sx={fabStyle}
+              className="hidden lg:hidden"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                });
+              }}
+            >
+              <ArrowUpward />
+            </Fab>
+          </Grid>
+        </>
+      )}
     </>
   );
 }

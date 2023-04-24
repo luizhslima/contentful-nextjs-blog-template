@@ -3,6 +3,8 @@ import queryHomeBlogPost from "@/graphql/queryHomeBlogPost.graphql";
 import queryPostBySlug from "@/graphql/queryPostBySlug.graphql";
 import queryAllPostWithSlug from "@/graphql/queryAllPostWithSlug.graphql";
 import queryMorePosts from "@/graphql/queryMorePosts.graphql";
+import queryGetPostWithPagination from "@/graphql/queryGetPostWithPagination.graphql";
+import { PostOrder } from "@/types/enums";
 
 type FetchApiParams = {
   variables?: any;
@@ -77,4 +79,10 @@ export async function getPostAndMorePosts(slug: string, preview = false) {
 export async function getAllPostWithSlug() {
   const entries = await fetchGraphQL(queryAllPostWithSlug);
   return extractPostEntries(entries);
+}
+
+export async function getPostsWithPagination(page: number, size: number, order: PostOrder, preview = false){
+  return fetchGraphQL(queryGetPostWithPagination,{
+    variables: {page, size, order, preview}
+  });
 }

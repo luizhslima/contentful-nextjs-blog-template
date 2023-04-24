@@ -2,6 +2,8 @@ import ProjectPanel from "@/components/panels/projectsPanel";
 import { formatMonthDayYear } from "@/components/utils/formats";
 import { getAllPostsForHome } from "@/lib/api";
 import {
+  Alert,
+  AlertTitle,
   Box,
   Button,
   Card,
@@ -44,6 +46,20 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
         }}
       >
         <Grid container direction="row" alignItems={"center"}>
+          <Grid item xs={12}>
+            <Alert severity="warning" onClose={() => {}}>
+              <AlertTitle>Alerta!!!</AlertTitle>
+              Este site ainda está em versão{" "}
+              <span className="font-bold">&quot;beta&ldquo;</span>, portanto, algo pode
+              quebrar ou não funcionar corretamente. Se gostou do site e deseja
+              contribuir para sua melhoria , por favor, abra uma issue no
+              repositório do{" "}
+              <Link href="https://github.com/luizhslima/contentful-nextjs-blog-template">
+                Github.
+              </Link>
+              👍
+            </Alert>
+          </Grid>
           <Grid item xs={12} md={6} lg={6}>
             <div className="flex flex-col gap-3">
               <Typography
@@ -60,11 +76,11 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
               </Typography>
               <Typography variant="body1">
                 Criei este site com o intuito de ajudar a comunidade, trazendo
-                conteúdo sobre programação resolvendo problemas reais de
-                negócios e programação. Sou desenvolvedor de software em São
-                Paulo e gosto de participar de projetos de código aberto, além
-                de escrever sobre codificação e criação de projetos pessoais e
-                inteligência financeira. Meus hobbies incluem jogos e animes.
+                conteúdo sobre programação.Sou desenvolvedor de software em São
+                Paulo e gosto de projetos de código aberto, além de falar
+                sobre codificação e criação de projetos pessoais e inteligência
+                financeira. Meus hobbies incluem jogos e animes, estilo de música não tenho
+                especifico mas em geral música eletrônica porém, escuto de tudo um pouco...
               </Typography>
             </div>
           </Grid>
@@ -169,7 +185,7 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
           <Grid item xs={12}>
             <Divider className="py-1" />
           </Grid>
-          <Grid item xs={12} lg={5}>
+          <Grid item xs={12} lg={6}>
             <Card
               sx={{
                 marginY: 1,
@@ -193,7 +209,7 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} lg={5}>
+          <Grid item xs={12} lg={6}>
             <Box
               className="relative"
               sx={{
