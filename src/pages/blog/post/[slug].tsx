@@ -21,7 +21,7 @@ export default function Post({ post, morePosts, preview }: any) {
 
   useEffect(() => {
     setCurrentURl(`${location.origin}/blog/post/${post.slug}`);
-  }, []);
+  }, [post.slug]);
 
   if (!router.isFallback && !post) {
     return (
