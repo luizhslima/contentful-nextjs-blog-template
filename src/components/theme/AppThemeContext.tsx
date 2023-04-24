@@ -29,7 +29,13 @@ export default function AppThemeContextProvider({
   children: React.ReactNode;
   attribute: string | "class";
 }) {
-  const [mode, setMode] = useState<"light" | "dark">();
+  const [mode, setMode] = useState<"light" | "dark">("light");
+
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
 
   const colorMode = useMemo(
     () => ({
@@ -40,20 +46,14 @@ export default function AppThemeContextProvider({
         });
       },
     }),
-    []
+    [theme]
   );
 
-  const theme = createTheme({
-    palette:{
-      mode: mode
-    }
-  });
-  
   theme.typography.h1 = {
     [theme.breakpoints.between("lg", "xl")]: {
       fontSize: "3rem",
     },
-    fontFamily: 'Inter'
+    fontFamily: "Inter",
   };
 
   theme.typography.h2 = {
@@ -80,7 +80,6 @@ export default function AppThemeContextProvider({
   );
 }
 
-
 declare module "@mui/material/styles" {
   interface TypographyVariants {
     poster: React.CSSProperties;
@@ -105,7 +104,6 @@ declare module "@mui/material/Typography" {
     link: true;
   }
 }
-
 
 export function useAppThemeContext() {
   return useContext(AppThemeContextMode);
