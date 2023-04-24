@@ -31,6 +31,7 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
     <>
       <Head>
         <title>Bem-vindo ao Stackoverbusi</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Box
         sx={{
@@ -219,7 +220,6 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
                   lg: "585px",
                 },
                 height: {
-                  xs: "200px",
                   md: "296px",
                   lg: "380px",
                 },

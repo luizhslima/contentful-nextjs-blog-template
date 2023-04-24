@@ -11,7 +11,7 @@ interface AppThemeContext {
   colorMode: {
     toggleColorMode: () => void;
   };
-  theme: Partial<Theme> | ((outerTheme: Theme) => Theme);
+  theme?: Partial<Theme> | ((outerTheme: Theme) => Theme);
   mode?: "light" | "dark";
 }
 
@@ -19,7 +19,6 @@ const AppThemeContextMode = createContext<AppThemeContext>({
   colorMode: {
     toggleColorMode: () => {},
   },
-  theme: createTheme(),
 });
 
 export default function AppThemeContextProvider({
@@ -29,7 +28,7 @@ export default function AppThemeContextProvider({
   children: React.ReactNode;
   attribute: string | "class";
 }) {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<"light" | "dark">();
 
   const theme = createTheme({
     palette: {
@@ -61,6 +60,7 @@ export default function AppThemeContextProvider({
       fontSize: "1.5rem",
     },
   };
+
   const themeMui = useMemo(() => theme, [mode]);
 
   let sharedState: AppThemeContext = {
@@ -73,7 +73,7 @@ export default function AppThemeContextProvider({
     <StyledEngineProvider injectFirst>
       <MuiThemeProvider theme={theme}>
         <AppThemeContextMode.Provider value={sharedState}>
-          <ThemeProvider attribute={attribute}>{children}</ThemeProvider>
+          <ThemeProvider attribute={attribute} enableSystem={false}>{children}</ThemeProvider>
         </AppThemeContextMode.Provider>
       </MuiThemeProvider>
     </StyledEngineProvider>

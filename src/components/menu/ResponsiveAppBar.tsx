@@ -41,8 +41,8 @@ function ResponsiveAppBar() {
   const { theme, setTheme } = useTheme();
   const themea = useAppThemeContext();
   useEffect(() => {
-    const themeChoose = localStorage.getItem("themeChoose") || "light";
-    if (themea.mode != themeChoose) {
+    const theme = localStorage.getItem("theme") || "light";
+    if (themea.mode != theme) {
       themea.colorMode.toggleColorMode();
     }
   });
@@ -145,10 +145,10 @@ function ResponsiveAppBar() {
             onClick={() => {
               themea.colorMode.toggleColorMode();
               if (themea.mode == "dark") {
-                localStorage.setItem("themeChoose", "light");
+                localStorage.setItem("theme", "light");
                 setTheme("light");
               } else {
-                localStorage.setItem("themeChoose", "dark");
+                localStorage.setItem("theme", "dark");
                 setTheme("dark");
               }
             }}

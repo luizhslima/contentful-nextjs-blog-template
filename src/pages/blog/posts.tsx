@@ -16,7 +16,7 @@ export default function Posts() {
   const theme = useTheme();
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const { data, error, size, setSize } = useSWRInfinite(
-    (index) => `posts-${index}`,
+    (index) => `${index}`,
     fetchPosts,
     { initialSize: 1 }
   );
