@@ -15,11 +15,8 @@ export default async function handler(
 
   try {
     let postSlug = req.body.fields.slug["pt-BR"];
-
-
-    await res.revalidate(`/posts/${postSlug}`);
+    await res.revalidate(`/blog/post/${postSlug}`);
     await res.revalidate("/");
-
     return res.json({ revalidated: true });
   } catch (err) {
     return res.status(500).send("Error revalidating");
