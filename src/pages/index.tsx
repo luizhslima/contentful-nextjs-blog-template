@@ -30,7 +30,7 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
   return (
     <>
       <Head>
-        <title>Bem-vindo ao Stackoverbusi</title>
+        <title>Luiz Monteiro </title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Box
@@ -79,8 +79,7 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
                 Criei este site com o intuito de ajudar a comunidade, trazendo
                 conteúdo sobre programação.Sou desenvolvedor de software em São
                 Paulo e gosto de projetos de código aberto, além de falar
-                sobre codificação e criação de projetos pessoais e inteligência
-                financeira. Meus hobbies incluem jogos e animes, estilo de música não tenho
+                sobre codificação e criação de projetos pessoais. Meus hobbies incluem jogos e animes, estilo de música não tenho
                 especifico mas em geral música eletrônica porém, escuto de tudo um pouco...
               </Typography>
             </div>

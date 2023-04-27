@@ -32,8 +32,8 @@ export default function CoverImage({
 
   return (
     <div
-      className={`sm:mx-0 relative h-[300px] lg:h-[500px] ${
-        miniatura ? "img-miniatura" : ""
+      className={`sm:mx-0 relative h-[300px] ${
+        miniatura ? "img-miniatura" : "lg:h-[500px]"
       }`}
     >
       {slug ? (

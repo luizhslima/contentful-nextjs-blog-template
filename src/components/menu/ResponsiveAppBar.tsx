@@ -17,7 +17,7 @@ import { useAppThemeContext } from "../theme/AppThemeContext";
 const pages = [
   {
     text: "Sobre",
-    href: "sobre",
+    href: "/eu",
   },
   {
     text: "Blog",
@@ -67,7 +67,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            Stackoverbusi
+            Luiz Monteiro
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

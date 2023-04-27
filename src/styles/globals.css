@@ -55,5 +55,5 @@ main{
 }
 
 .img-miniatura{
-  @apply h-[200px] !important;
+  @apply h-[200px] lg:h-[200px] !important;
 }

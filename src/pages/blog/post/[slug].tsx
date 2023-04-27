@@ -4,7 +4,7 @@ import PostHeader from "@/components/blocks/post-header";
 import ShareSocial from "@/components/social/RssUsage";
 import { getAllPostWithSlug, getPostAndMorePosts } from "@/lib/api";
 import { ArrowUpward } from "@mui/icons-material";
-import { Divider, Fab, Grid, Typography } from "@mui/material";
+import { Alert, Divider, Fab, Grid, Typography } from "@mui/material";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
@@ -18,8 +18,6 @@ export default function Post({ post, morePosts, preview }: any) {
     bottom: 16,
     right: 16,
   };
-
-  
 
   useEffect(() => {
     setCurrentURl(`${location.origin}/blog/post/${post.slug}`);
@@ -36,9 +34,7 @@ export default function Post({ post, morePosts, preview }: any) {
   return (
     <>
       {router.isFallback ? (
-        <div>
-          ...loading
-        </div>
+        <div>...loading</div>
       ) : (
         <>
           <Head>
@@ -55,6 +51,24 @@ export default function Post({ post, morePosts, preview }: any) {
               position: "relative",
             }}
           >
+            <Grid item xs={12}>
+              {preview ? (
+                <div className="content-center">
+                  <Alert>
+                    This is page is a preview.{" "}
+                    <a
+                      href="/api/exit-preview"
+                      className="underline hover:text-cyan duration-200 transition-colors"
+                    >
+                      Click here
+                    </a>{" "}
+                    to exit preview mode.
+                  </Alert>
+                </div>
+              ) : (
+                ""
+              )}
+            </Grid>
             <Grid item xs={12}>
               <div className="content-center">
                 <PostHeader
