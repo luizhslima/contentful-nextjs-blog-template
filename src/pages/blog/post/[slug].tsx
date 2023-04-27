@@ -41,6 +41,10 @@ export default function Post({ post, morePosts, preview }: any) {
           <Head>
             <title>{`${post.title} | Luiz - Blog`}</title>
             <meta property="og:image" content={post.featureImage.url} />
+            <meta
+              name="viewport"
+              content="initial-scale=1, width=device-width"
+            />
           </Head>
           <Grid
             container
