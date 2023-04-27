@@ -4,6 +4,7 @@ import queryPostBySlug from "@/graphql/queryPostBySlug.graphql";
 import queryAllPostWithSlug from "@/graphql/queryAllPostWithSlug.graphql";
 import queryMorePosts from "@/graphql/queryMorePosts.graphql";
 import queryGetPostWithPagination from "@/graphql/queryGetPostWithPagination.graphql";
+import queryGetAllprojects from "@/graphql/queryGetAllprojects.graphql";
 import { PostOrder } from "@/types/enums";
 
 type FetchApiParams = {
@@ -46,8 +47,8 @@ function extractCategoriasEntries(fetchResponse: any) {
   return fetchResponse?.data?.categoriaCollection.items;
 }
 
-function extractPost(fetchResponse:any) {
-  return fetchResponse?.data?.postCollection?.items?.[0]
+function extractPost(fetchResponse: any) {
+  return fetchResponse?.data?.postCollection?.items?.[0];
 }
 
 export async function getAllPostsForHome(preview = false) {
@@ -65,15 +66,15 @@ export async function getPostAndMorePosts(slug: string, preview = false) {
   const entry = await fetchGraphQL(queryPostBySlug, {
     variables: { slug, preview },
   });
-  
+
   const entries = await fetchGraphQL(queryMorePosts, {
-    variables: { slug, preview }
+    variables: { slug, preview },
   });
 
   return {
     post: extractPost(entry),
-    morePosts: extractPostEntries(entries)
-  }
+    morePosts: extractPostEntries(entries),
+  };
 }
 
 export async function getAllPostWithSlug() {
@@ -81,8 +82,21 @@ export async function getAllPostWithSlug() {
   return extractPostEntries(entries);
 }
 
-export async function getPostsWithPagination(page: number, size: number, order: PostOrder, preview = false){
-  return fetchGraphQL(queryGetPostWithPagination,{
-    variables: {page, size, order, preview}
+export async function getPostsWithPagination(
+  page: number,
+  size: number,
+  order: PostOrder,
+  preview = false
+) {
+  return fetchGraphQL(queryGetPostWithPagination, {
+    variables: { page, size, order, preview },
   });
+}
+
+export async function getAllproject(preview = false) {
+  const entries =  await fetchGraphQL(queryGetAllprojects, {
+    variables: { preview },
+  });
+
+  return extractProjetosEntries(entries);
 }

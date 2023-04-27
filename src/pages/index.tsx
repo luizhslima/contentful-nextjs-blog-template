@@ -51,10 +51,10 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
             <Alert severity="warning" onClose={() => {}}>
               <AlertTitle>Alerta!!!</AlertTitle>
               Este site ainda está em versão{" "}
-              <span className="font-bold">&quot;beta&ldquo;</span>, portanto, algo pode
-              quebrar ou não funcionar corretamente. Se gostou do site e deseja
-              contribuir para sua melhoria , por favor, abra uma issue no
-              repositório do{" "}
+              <span className="font-bold">&quot;beta&ldquo;</span>, portanto,
+              algo pode quebrar ou não funcionar corretamente. Se gostou do site
+              e deseja contribuir para sua melhoria , por favor, abra uma issue
+              no repositório do{" "}
               <Link href="https://github.com/luizhslima/contentful-nextjs-blog-template">
                 Github.
               </Link>
@@ -78,9 +78,10 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
               <Typography variant="body1">
                 Criei este site com o intuito de ajudar a comunidade, trazendo
                 conteúdo sobre programação.Sou desenvolvedor de software em São
-                Paulo e gosto de projetos de código aberto, além de falar
-                sobre codificação e criação de projetos pessoais. Meus hobbies incluem jogos e animes, estilo de música não tenho
-                especifico mas em geral música eletrônica porém, escuto de tudo um pouco...
+                Paulo e gosto de projetos de código aberto, além de falar sobre
+                codificação e criação de projetos pessoais. Meus hobbies incluem
+                jogos e animes, estilo de música não tenho especifico mas em
+                geral música eletrônica porém, escuto de tudo um pouco...
               </Typography>
             </div>
           </Grid>
@@ -173,7 +174,9 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
               >
                 Projetos 📋
               </Typography>
-              <Button variant="contained">Ver mais</Button>
+              <Button variant="contained" href="/projetos">
+                Ver mais
+              </Button>
             </div>
           </Grid>
           <Grid item xs={12}>
@@ -185,7 +188,7 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
           <Grid item xs={12}>
             <Divider className="py-1" />
           </Grid>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12}>
             <Card
               sx={{
                 marginY: 1,

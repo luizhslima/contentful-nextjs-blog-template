@@ -1,0 +1,16 @@
+query GetAllProjects{
+  # add your query
+  projetoCollection{
+    items{
+      titulo
+      artigoUrl
+      demoUrl
+      githubUrl
+    	descricao
+      dataFinalizacao
+      sys{
+        publishedAt
+      }
+    }
+  }
+}

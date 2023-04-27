@@ -16,12 +16,12 @@ export interface ProjectPanelProps {
 }
 
 export interface Project {
-    titulo: string;
-    descricao: string;
-    artigoUrl: string;
-    demoUrl: string;
-    githubUrl: string;
-    dataFinalizacao: string;
+  titulo: string;
+  descricao: string;
+  artigoUrl: string;
+  demoUrl: string;
+  githubUrl: string;
+  dataFinalizacao: string;
 }
 
 export default function ProjectPanel(props: ProjectPanelProps) {
@@ -39,8 +39,16 @@ export default function ProjectPanel(props: ProjectPanelProps) {
   return (
     <Grid container>
       {props.projetos?.map((item, index) => (
-        <Grid item key={index}>
-          <Card elevation={0} variant="outlined">
+        <Grid item key={index} xs={12} md={3} lg={5}>
+          <Card
+            elevation={0}
+            variant="outlined"
+            sx={
+              {
+                maxWidth: 345
+              }
+            }
+          >
             <CardContent>
               <Typography variant="contrast">
                 {parseISO(item.dataFinalizacao).getFullYear()}
@@ -62,10 +70,14 @@ export default function ProjectPanel(props: ProjectPanelProps) {
             </CardContent>
             <CardActions>
               {item.demoUrl && (
-                <Button href={item.demoUrl} variant="outlined">Demo</Button>
+                <Button href={item.demoUrl} variant="outlined">
+                  Demo
+                </Button>
               )}
               {item.artigoUrl && (
-                <Button href={item.artigoUrl} variant="outlined">Artigo</Button>
+                <Button href={item.artigoUrl} variant="outlined">
+                  Artigo
+                </Button>
               )}
             </CardActions>
           </Card>
