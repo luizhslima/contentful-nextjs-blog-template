@@ -39,7 +39,6 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
             paddingX: 1,
           },
           width: {
-            xs: "100%",
             md: "820px",
             lg: "920px",
           },

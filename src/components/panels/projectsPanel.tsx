@@ -43,11 +43,6 @@ export default function ProjectPanel(props: ProjectPanelProps) {
           <Card
             elevation={0}
             variant="outlined"
-            sx={
-              {
-                maxWidth: 345
-              }
-            }
           >
             <CardContent>
               <Typography variant="contrast">
