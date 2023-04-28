@@ -9,9 +9,19 @@
   font-family: "Inter";
 }
 
-.markdown ul li{
-  display: flex;
-  flex-wrap: wrap;
+@media screen and (max-width: 390px) {
+  .markdown ul li {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .markdown ul li p a{
+    display: block;
+  }
+
+  .markdown ul {
+    padding: 1px;
+  }
 }
 
 .markdown h2 {
