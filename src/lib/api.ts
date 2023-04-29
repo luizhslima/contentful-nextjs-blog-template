@@ -5,7 +5,9 @@ import queryAllPostWithSlug from "@/graphql/queryAllPostWithSlug.graphql";
 import queryMorePosts from "@/graphql/queryMorePosts.graphql";
 import queryGetPostWithPagination from "@/graphql/queryGetPostWithPagination.graphql";
 import queryGetAllprojects from "@/graphql/queryGetAllprojects.graphql";
+import queryGetPostsByCategoriaSlug from "@/graphql/queryGetPostsByCategoriaSlug.graphql";
 import { PostOrder } from "@/types/enums";
+import gql from "graphql-tag";
 
 type FetchApiParams = {
   variables?: any;
@@ -94,9 +96,35 @@ export async function getPostsWithPagination(
 }
 
 export async function getAllproject(preview = false) {
-  const entries =  await fetchGraphQL(queryGetAllprojects, {
+  const entries = await fetchGraphQL(queryGetAllprojects, {
     variables: { preview },
   });
 
   return extractProjetosEntries(entries);
+}
+
+export async function getAllCategories(preview = false) {
+  const query = gql`
+    query getAllCategories {
+      categoriaCollection {
+        items {
+          slug
+        }
+      }
+    }
+  `;
+
+  const entries = await fetchGraphQL(query, {
+    variables: { preview },
+  });
+
+  return extractCategoriasEntries(entries);
+}
+
+export async function getPostsByCategoriaSlug(slug: string, preview = false) {
+  const entries = await fetchGraphQL(queryGetPostsByCategoriaSlug, {
+    variables: { slug, preview }
+  });
+
+  return extractPostEntries(entries);
 }

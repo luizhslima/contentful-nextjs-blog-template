@@ -1,0 +1,18 @@
+query GetPostsByCategoriaSlug($slug:String){
+  # add your query
+  postCollection(where: { categorias: { slug_contains: $slug } }){
+    skip
+    total
+    items{
+      slug
+      featureImage{
+        url
+        description
+      }
+      title
+      sys{
+        publishedAt
+      }
+    }
+  }
+}

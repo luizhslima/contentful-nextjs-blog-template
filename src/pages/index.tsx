@@ -80,7 +80,7 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
                 Paulo e gosto de projetos de código aberto, além de falar sobre
                 codificação e criação de projetos pessoais. Meus hobbies incluem
                 jogos e animes, estilo de música não tenho especifico mas em
-                geral música eletrônica porém, escuto de tudo um pouco...
+                geral música eletrônica.
               </Typography>
             </div>
           </Grid>
@@ -187,7 +187,7 @@ export default function Home({ queryReponse }: { queryReponse: any }) {
           <Grid item xs={12}>
             <Divider className="py-1" />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} lg={6}>
             <Card
               sx={{
                 marginY: 1,
