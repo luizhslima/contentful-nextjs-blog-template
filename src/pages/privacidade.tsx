@@ -136,11 +136,7 @@ export default function Privacidade() {
     return (
         <div>
             <h1>Política de Privacidade</h1>
-            <p>
-                <span style={{ color: 'rgb(68, 68, 68)' }}>
-                    Esta é a nossa política de privacidade. Comprometemo-nos a proteger a sua privacidade e a garantir que os seus dados pessoais sejam tratados de forma segura e em conformidade com a legislação aplicável.
-                </span>
-            </p>
+            <PrivacyPolicy />
         </div>
     )
 }
